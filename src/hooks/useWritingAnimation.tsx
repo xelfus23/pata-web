@@ -1,13 +1,17 @@
+"use client";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
-
-
-export const writingAnimation = (
+export const useWritingAnimation = (
     text: string,
     duration: number,
     delay: number
 ) => {
     const spltText = text.split("");
+    const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+
+    console.log(hoveredItem);
+
     return spltText.map((char, index) => {
         return (
             <motion.span
@@ -20,6 +24,11 @@ export const writingAnimation = (
                     ease: "easeInOut",
                     staggerChildren: 0.05,
                 }}
+                style={{
+                    scale: hoveredItem === index ? 2 : 1,
+                }}
+                onHoverStart={() => setHoveredItem(index)}
+                onHoverEnd={() => setHoveredItem(null)}
             >
                 {char}
             </motion.span>

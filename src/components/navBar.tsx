@@ -1,17 +1,68 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
-const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
+interface NavItem {
+    name: string;
+    path: string;
+}
 
-    const navItems = [
-        { name: "Home", path: "#home" },
-        { name: "About", path: "#about" },
-        { name: "Projects", path: "#projects" },
-        { name: "Contact", path: "#contact" },
-    ];
+interface NavRefs {
+    container: HTMLDivElement | null;
+    [key: string]: HTMLAnchorElement | HTMLDivElement | null;
+}
+
+const Navbar: React.FC = () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const pathname = usePathname();
+    const [activeItemWidth, setActiveItemWidth] = useState<number>(0);
+    const [activeItemLeft, setActiveItemLeft] = useState<number>(0);
+    const navRefs = useRef<NavRefs>({ container: null });
+
+    const navItems = useMemo<NavItem[]>(
+        () => [
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+            { name: "Projects", path: "/projects" },
+            { name: "Contact", path: "/contact" },
+            { name: "Library", path: "/library" },
+        ],
+        []
+    );
+
+    // Update underline position when pathname changes
+    useEffect(() => {
+        const activeItem = navItems.find((item) => item.path === pathname);
+        if (
+            activeItem &&
+            navRefs.current[activeItem.name] &&
+            navRefs.current.container
+        ) {
+            const activeElement = navRefs.current[
+                activeItem.name
+            ] as HTMLAnchorElement;
+            const containerElement = navRefs.current
+                .container as HTMLDivElement;
+
+            const rect = activeElement.getBoundingClientRect();
+            const containerRect = containerElement.getBoundingClientRect();
+
+            setActiveItemWidth(rect.width);
+            setActiveItemLeft(rect.x - containerRect.x);
+        }
+    }, [navItems, pathname]);
+
+    // Ref callback functions
+    const setContainerRef = (el: HTMLDivElement | null) => {
+        navRefs.current.container = el;
+    };
+
+    const setNavItemRef = (name: string) => (el: HTMLAnchorElement | null) => {
+        navRefs.current[name] = el;
+    };
 
     return (
         <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-secondary/20">
@@ -20,8 +71,14 @@ const Navbar = () => {
                     <div className="flex items-center">
                         <Link
                             href="/"
-                            className="flex-shrink-0 flex items-center"
+                            className="flex-shrink-0 flex items-center space-x-2"
                         >
+                            <Image
+                                src={"/icons/icon.png"}
+                                width={30}
+                                height={30}
+                                alt=""
+                            />
                             <motion.span
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -34,7 +91,25 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop menu */}
-                    <div className="hidden md:flex items-center space-x-4">
+                    <div
+                        className="hidden md:flex items-center space-x-4 relative"
+                        ref={setContainerRef}
+                    >
+                        {/* Animated underline */}
+                        <motion.div
+                            className="absolute bottom-0 h-0.5 bg-primary rounded-full"
+                            initial={false}
+                            animate={{
+                                width: activeItemWidth,
+                                left: activeItemLeft,
+                            }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 30,
+                            }}
+                        />
+
                         {navItems.map((item, index) => (
                             <motion.div
                                 key={item.name}
@@ -47,7 +122,12 @@ const Navbar = () => {
                             >
                                 <Link
                                     href={item.path}
-                                    className="px-3 py-2 text-text hover:text-primary transition-colors duration-300"
+                                    className={`px-3 py-2 ${
+                                        pathname === item.path
+                                            ? "text-primary"
+                                            : "text-text"
+                                    } hover:text-primary transition-colors duration-300`}
+                                    ref={setNavItemRef(item.name)}
                                 >
                                     {item.name}
                                 </Link>
@@ -103,7 +183,11 @@ const Navbar = () => {
                         <Link
                             key={item.name}
                             href={item.path}
-                            className="block px-3 py-2 text-text hover:text-primary transition-colors duration-300"
+                            className={`block px-3 py-2 ${
+                                pathname === item.path
+                                    ? "text-primary border-l-2 border-primary pl-2"
+                                    : "text-text"
+                            } hover:text-primary transition-colors duration-300`}
                             onClick={() => setIsOpen(false)}
                         >
                             {item.name}

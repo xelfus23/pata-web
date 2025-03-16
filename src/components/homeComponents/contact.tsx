@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Section from "./ui/section";
+import Section from "../ui/section";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -98,7 +98,7 @@ const Contact = () => {
                                     href="tel:+1234567890"
                                     className="text-primary hover:text-primary/80 transition-colors duration-300"
                                 >
-                                    +63 (916) 331-8032
+                                    +63 916 331 8032
                                 </a>
                             </div>
                         </div>

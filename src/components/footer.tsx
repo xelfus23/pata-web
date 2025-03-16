@@ -1,8 +1,13 @@
-'use client';
+"use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-const Footer = () => {
+interface footerProps {
+    zIndex: number;
+}
+
+const Footer: React.FC<footerProps> = ({ zIndex }) => {
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
@@ -27,7 +32,7 @@ const Footer = () => {
         },
         {
             name: "LinkedIn",
-            url: "https://linkedin.com/in/yourusername",
+            url: "https://linkedin.com/in/patrick-john-medenilla-03a64734b/",
             icon: (
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -47,8 +52,8 @@ const Footer = () => {
             ),
         },
         {
-            name: "Twitter",
-            url: "https://twitter.com/yourusername",
+            namae: "Facebook",
+            url: "https://www.facebook.com/Patrick.John.Medenilla/",
             icon: (
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -57,11 +62,11 @@ const Footer = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                 >
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
             ),
         },
@@ -88,22 +93,33 @@ const Footer = () => {
     ];
 
     const navLinks = [
-        { name: "Home", path: "/" },
-        { name: "About", path: "/about" },
-        { name: "Projects", path: "/projects" },
-        { name: "Contact", path: "/contact" },
+        { name: "Home", path: "#home" },
+        { name: "About", path: "#about" },
+        { name: "Projects", path: "#projects" },
+        { name: "Contact", path: "#contact" },
     ];
 
     return (
-        <footer className="bg-background border-t border-secondary/20 pt-12 pb-6">
+        <footer
+            className="bg-background border-t border-secondary/20 pt-12 pb-6"
+            style={{
+                zIndex: zIndex,
+            }}
+        >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-3 gap-8 mb-8">
                     <div>
                         <Link
                             href="/"
-                            className="text-2xl font-bold text-primary mb-4 block"
+                            className="text-2xl font-bold text-primary mb-4 flex space-x-2"
                         >
-                            YourName
+                            <Image
+                                src={"/icons/icon.png"}
+                                width={30}
+                                height={30}
+                                alt=""
+                            />
+                            <p>Patrick</p>
                         </Link>
                         <p className="text-text/80 mb-4">
                             A passionate front-end developer focused on creating

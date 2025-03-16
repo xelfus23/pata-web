@@ -20,7 +20,7 @@ const Section = ({
     return (
         <section
             id={id}
-            className={`py-16 md:py-24 px-4 relative overflow-hidden ${className}`}
+            className={`py-16 md:py-24 px-4 relative overflow-hidden ${className} z-10`}
         >
             <div className="max-w-6xl mx-auto">
                 <motion.div

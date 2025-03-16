@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useCursorState } from "../utils/cursorProvider";
 
 interface ProjectCardProps {
     title: string;
@@ -20,6 +21,8 @@ const ProjectCard = ({
     liveUrl,
     index,
 }: ProjectCardProps) => {
+    const { setCursorState } = useCursorState();
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -27,6 +30,8 @@ const ProjectCard = ({
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="group bg-background border border-secondary/20 rounded-xl overflow-hidden hover:border-primary/50 transition-colors duration-300"
+            onHoverStart={() => setCursorState({ scale: 3 })}
+            onHoverEnd={() => setCursorState({ scale: 0.5 })}
         >
             <div className="aspect-video bg-secondary/10 relative overflow-hidden">
                 {imageUrl ? (

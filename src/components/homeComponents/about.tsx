@@ -1,8 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import Section from "./ui/section";
+import Section from "../ui/section";
 import Image from "next/image";
 import useScroll from "@/hooks/useScroll";
+import { useCursorState } from "../utils/cursorProvider";
 
 const About = () => {
     const skills = [
@@ -13,7 +14,11 @@ const About = () => {
         "TailwindCSS",
         "Framer Motion",
         "React Native",
+        "HTML5",
+        "CSS3",
     ];
+
+    const { setCursorState } = useCursorState();
 
     const offset = useScroll();
 
@@ -23,12 +28,15 @@ const About = () => {
             title="About Me"
             subtitle="Learn more about my skills and experience"
         >
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-12 items-center min-h-screen">
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6 }}
+                    onHoverStart={() => setCursorState({ scale: 4 })}
+                    onHoverEnd={() => setCursorState({ scale: 1 })}
+                    className="z-10"
                 >
                     <div className="aspect-square rounded-2xl overflow-hidden relative bg-gradient-to-br from-primary/20 to-secondary/20">
                         {/* Replace with your image */}
@@ -37,7 +45,7 @@ const About = () => {
                                 y: offset * 0.05,
                             }}
                             transition={{
-                                duration: 1,
+                                duration: 0,
                             }}
                             className="absolute inset-0 flex items-center justify-center text-primary"
                         >
@@ -103,6 +111,12 @@ const About = () => {
                                         duration: 0.3,
                                         delay: 0.1 * index,
                                     }}
+                                    onHoverStart={() =>
+                                        setCursorState({ scale: 1 })
+                                    }
+                                    onHoverEnd={() =>
+                                        setCursorState({ scale: 0.5 })
+                                    }
                                     className="px-3 py-1 bg-secondary/10 text-text rounded-md border border-secondary/20"
                                 >
                                     {skill}
