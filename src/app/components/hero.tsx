@@ -3,7 +3,7 @@ import { useWritingAnimation } from "@/hooks/useWritingAnimation";
 // import useScroll from "@/hooks/useScroll";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useCursorState } from "../utils/cursorProvider";
+import { useCursorState } from "../../utils/cursorProvider";
 
 const Hero: React.FC = () => {
     // const scroll = useScroll() * 0.4;
@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
                             transition={{
                                 duration: 0.3,
                             }}
-                            className="text-xl md:text-2xl font-medium mb-8 text-text/80"
+                            className="text-xl md:text-1xl font-medium mb-8 text-text/80 font-mono"
                         >
                             {useWritingAnimation(
                                 `I build modern web experiences with React, Next.js,

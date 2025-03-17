@@ -1,5 +1,6 @@
+"use client";
 import useScroll from "@/hooks/useScroll";
-import { useCursorState } from "../utils/cursorProvider";
+import { useCursorState } from "../../utils/cursorProvider";
 import useCursorPosition from "@/hooks/useMouse";
 
 export default function Debug() {

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useCursorState } from "../utils/cursorProvider";
+import { useCursorState } from "../../utils/cursorProvider";
 
 interface CursorFollowerProps {
     size?: number;
@@ -54,7 +54,7 @@ const CursorFollower: React.FC<CursorFollowerProps> = ({
                 x: springX,
                 y: springY,
                 translateX: `-50%`,
-                translateY: `-170%`,
+                translateY: `-50%`,
             }}
             animate={{
                 scale: scale,

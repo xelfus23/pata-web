@@ -1,12 +1,11 @@
 "use client";
-import About from "@/components/homeComponents/about";
-import Contact from "@/components/homeComponents/contact";
-import Hero from "@/components/homeComponents/hero";
-import Projects from "@/components/homeComponents/projects";
-import Skills from "@/components/homeComponents/skills";
+import About from "@/app/components/about";
+import Contact from "@/app/components/contact";
+import Hero from "@/app/components/hero";
+import Projects from "@/app/components/projects";
+// import Skills from "@/app/components/skills";
 import CursorFollower from "@/components/ui/cursor";
 import GridBackground from "@/components/ui/gridBackground";
-// import Debug from "@/components/ui/debug";
 export default function Home() {
     const sections = [
         { key: 1, component: <Hero /> },
@@ -14,10 +13,10 @@ export default function Home() {
             key: 2,
             component: <About />,
         },
-        {
-            key: 3,
-            component: <Skills />,
-        },
+        // {
+        //     key: 3,
+        //     component: <Skills />,
+        // },
         {
             key: 4,
             component: <Projects />,
@@ -29,8 +28,8 @@ export default function Home() {
     ];
 
     return (
-        <main className="scroll-smooth">
-            <CursorFollower lag={0.05}/>
+        <main className="scroll-smooth overflow-y-hidden relative">
+            <CursorFollower lag={0.05} />
 
             {sections.map((v, i) => (
                 <div className="min-h-screen z-0" key={i}>
@@ -38,15 +37,13 @@ export default function Home() {
                 </div>
             ))}
 
-            <div className="absolute h-fit w-full top-0">
+            <div className="absolute h-fit w-full top-0 -z-10">
                 {Array(sections.length)
                     .fill(0)
                     .map((_, i) => (
                         <GridBackground key={i} />
                     ))}
             </div>
-
-            {/* <Debug /> */}
         </main>
     );
 }

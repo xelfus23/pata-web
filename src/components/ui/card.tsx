@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useCursorState } from "../utils/cursorProvider";
+import { useCursorState } from "../../utils/cursorProvider";
 
 interface ProjectCardProps {
     title: string;
@@ -29,7 +29,7 @@ const ProjectCard = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group bg-background border border-secondary/20 rounded-xl overflow-hidden hover:border-primary/50 transition-colors duration-300"
+            className="group bg-background border border-secondary/20 rounded-xl overflow-hidden hover:border-primary/50 transition-colors hover:cursor-crosshair duration-300"
             onHoverStart={() => setCursorState({ scale: 3 })}
             onHoverEnd={() => setCursorState({ scale: 0.5 })}
         >

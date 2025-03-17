@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import Section from "../ui/section";
-import { useCursorState } from "../utils/cursorProvider";
+import Section from "./section";
+import { useCursorState } from "../../utils/cursorProvider";
 
 const Skills = () => {
     const { setCursorState } = useCursorState();
@@ -9,12 +9,17 @@ const Skills = () => {
         {
             name: "Frontend",
             skills: [
-                { name: "React.js", level: 60 },
+                { name: "React.js", level: 70 },
                 { name: "Next.js", level: 55 },
                 { name: "TypeScript", level: 50 },
                 { name: "TailwindCSS", level: 65 },
                 { name: "Framer Motion", level: 55 },
-                { name: "React Native", level: 80 },
+                { name: "React Native", level: 75 },
+                { name: "Three.js", level: 5 },
+                { name: "Responsive Design", level: 70 },
+                { name: "HTML5", level: 90 },
+                { name: "CSS3", level: 70 },
+                { name: "JavaScript", level: 60 },
             ],
         },
         {
@@ -44,7 +49,7 @@ const Skills = () => {
             title="Skills"
             subtitle="My technical skills and expertise"
         >
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
                 {skillCategories.map((category, categoryIndex) => (
                     <div key={category.name}>
                         <motion.div
@@ -88,7 +93,6 @@ const Skills = () => {
                                                         }}
                                                         viewport={{
                                                             once: true,
-                                                            margin: "-100px",
                                                         }}
                                                         transition={{
                                                             duration: 1,

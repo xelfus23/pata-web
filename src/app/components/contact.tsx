@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Section from "../ui/section";
+import Section from "../../components/ui/section";
+import { useCursorState } from "@/utils/cursorProvider";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ const Contact = () => {
         email: "",
         message: "",
     });
+
+    const { setCursorState } = useCursorState();
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -200,12 +203,14 @@ const Contact = () => {
                             ></textarea>
                         </div>
 
-                        <button
+                        <motion.button
                             type="submit"
-                            className="px-6 py-3 bg-primary text-background font-medium rounded-md hover:bg-primary/90 transition-colors duration-300 w-full md:w-auto"
+                            className="px-6 py-3 bg-primary text-background font-medium rounded-md hover:bg-primary/90 transition-colors duration-300 w-full md:w-auto hover:cursor-pointer"
+                            onHoverStart={() => setCursorState({ scale: 2 })}
+                            onHoverEnd={() => setCursorState({ scale: 0.5 })}
                         >
                             Send Message
-                        </button>
+                        </motion.button>
                     </form>
                 </motion.div>
             </div>

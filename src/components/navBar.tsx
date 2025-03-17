@@ -4,6 +4,8 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { useWritingAnimation } from "@/hooks/useWritingAnimation";
+import { move } from "@/animations/animations";
 
 interface NavItem {
     name: string;
@@ -73,19 +75,22 @@ const Navbar: React.FC = () => {
                             href="/"
                             className="flex-shrink-0 flex items-center space-x-2"
                         >
-                            <Image
-                                src={"/icons/icon.png"}
-                                width={30}
-                                height={30}
-                                alt=""
-                            />
+                            <motion.div
+                                variants={move}
+                                initial="initial"
+                                animate="animate"
+                                custom={{ from: "left", delay: 0}}
+                                className="relative h-8 w-8"
+                            >
+                                <Image src={"/icons/icon.png"} fill alt="" />
+                            </motion.div>
                             <motion.span
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5 }}
                                 className="text-xl font-bold text-primary"
                             >
-                                XELFUS
+                                {useWritingAnimation("PATRICK", 1, 0.05)}
                             </motion.span>
                         </Link>
                     </div>

@@ -1,5 +1,5 @@
-import Section from "../ui/section";
-import ProjectCard from "../ui/card";
+import Section from "../../components/ui/section";
+import ProjectCard from "../../components/ui/card";
 
 const Projects = () => {
     const projects = [
@@ -19,29 +19,12 @@ const Projects = () => {
             githubUrl: "#",
             liveUrl: "#",
         },
-        {
-            title: "Fitness App",
-            description:
-                "A fitness mobile application that leverages AI to generate exercise plans.",
-            technologies: ["React Native", "React"],
-            githubUrl: "#",
-            liveUrl: "#",
-        },
-        {
-            title: "Fitness App",
-            description:
-                "A fitness mobile application that leverages AI to generate exercise plans.",
-            technologies: ["React Native", "React"],
-            githubUrl: "#",
-            liveUrl: "#",
-        },
     ];
-
 
     return (
         <Section
             id="projects"
-            title="Projects"
+            title="Featured Projects"
             subtitle="Check out some of my recent work"
         >
             <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
