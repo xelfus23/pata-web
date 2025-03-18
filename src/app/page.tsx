@@ -3,9 +3,9 @@ import About from "@/app/components/about";
 import Contact from "@/app/components/contact";
 import Hero from "@/app/components/hero";
 import Projects from "@/app/components/projects";
-// import Skills from "@/app/components/skills";
 import CursorFollower from "@/components/ui/cursor";
 import GridBackground from "@/components/ui/gridBackground";
+
 export default function Home() {
     const sections = [
         { key: 1, component: <Hero /> },
@@ -13,10 +13,6 @@ export default function Home() {
             key: 2,
             component: <About />,
         },
-        // {
-        //     key: 3,
-        //     component: <Skills />,
-        // },
         {
             key: 4,
             component: <Projects />,

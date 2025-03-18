@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
             { name: "About", path: "/about" },
             { name: "Projects", path: "/projects" },
             { name: "Contact", path: "/contact" },
-            { name: "Library", path: "/library" },
+            { name: "My UI Library", path: "/library" },
         ],
         []
     );
@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
                                 variants={move}
                                 initial="initial"
                                 animate="animate"
-                                custom={{ from: "left", delay: 0}}
+                                custom={{ from: "left", delay: 0 }}
                                 className="relative h-8 w-8"
                             >
                                 <Image src={"/icons/icon.png"} fill alt="" />

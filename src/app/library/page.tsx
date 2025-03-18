@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { move } from "@/animations/animations";
 
-export default function LibraryHomePage({
+export default function LibraryPage({
     children,
 }: {
     children: React.ReactNode;
