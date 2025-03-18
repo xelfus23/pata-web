@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 import { move } from "@/animations/animations";
 import React from "react";
 
-export default function LibraryPage({
-    children,
-}: {
+interface LibType {
     children: React.ReactNode;
-}) {
+}
+
+export default function LibraryPage({ children }: LibType) {
     return (
         <div className="lg:grid grid-cols-5 mt-16 min-h-screen">
             <div className="py-4">
