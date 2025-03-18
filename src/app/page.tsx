@@ -26,7 +26,6 @@ export default function Home() {
     return (
         <main className="scroll-smooth overflow-y-hidden relative">
             <CursorFollower lag={0.05} />
-
             {sections.map((v, i) => (
                 <div className="min-h-screen z-0" key={i}>
                     {v.component}

@@ -23,10 +23,9 @@ const HeroSection = () => {
                 </h1>
                 <p className="text-lg md:text-xl font-mono text-text/80 leading-relaxed text-center">
                     {useWritingAnimation(
-                        `A passionate student developer eager to learn and build
-                    impactful solutions.`,
+                        `A passionate student developer eager to learn and build impactful solutions.`,
                         1,
-                        0.01,
+                        0.03,
                         false
                     )}
                 </p>

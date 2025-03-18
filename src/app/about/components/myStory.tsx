@@ -82,7 +82,7 @@ const MyStory = () => {
                     ))}
                 </motion.div>
 
-                <motion.div
+                {/* <motion.div
                     variants={FadeIn}
                     initial="initial"
                     whileInView="animate"
@@ -94,7 +94,7 @@ const MyStory = () => {
                     >
                         Explore My Roadmap
                     </a>
-                </motion.div>
+                </motion.div> */}
             </div>
         </Section>
     );

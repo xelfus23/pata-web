@@ -1,26 +1,8 @@
 import Section from "../../components/ui/section";
 import ProjectCard from "../../components/ui/card";
+import { projectsData } from "@/lib/project/project-data";
 
 const Projects = () => {
-    const projects = [
-        {
-            title: "Fitness App",
-            description:
-                "A fitness mobile application that leverages AI to generate exercise plans.",
-            technologies: ["React Native", "React"],
-            githubUrl: "#",
-            liveUrl: "#",
-        },
-        {
-            title: "Fitness App",
-            description:
-                "A fitness mobile application that leverages AI to generate exercise plans.",
-            technologies: ["React Native", "React"],
-            githubUrl: "#",
-            liveUrl: "#",
-        },
-    ];
-
     return (
         <Section
             id="projects"
@@ -28,7 +10,7 @@ const Projects = () => {
             subtitle="Check out some of my recent work"
         >
             <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-                {projects.map((project, index) => (
+                {projectsData.map((project, index) => (
                     <ProjectCard
                         key={index}
                         title={project.title}
@@ -36,6 +18,7 @@ const Projects = () => {
                         technologies={project.technologies}
                         githubUrl={project.githubUrl}
                         liveUrl={project.liveUrl}
+                        imageUrl={project.imageUrl} //Pass Image to Project Card
                         index={index}
                     />
                 ))}

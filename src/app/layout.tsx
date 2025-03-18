@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navBar";
 import React from "react";
 import { Analytics } from "@vercel/analytics/react";
+import ScrollToTop from "@/components/scrolltoTop";
 
 // import Debug from "@/components/ui/debug";
 
@@ -30,15 +31,15 @@ export default function RootLayout({
                 className={`${inter.className} bg-background text-text scrollbar-hidden`}
             >
                 <Navbar />
-
+                <ScrollToTop>
+                    <CursorProvider>{children}</CursorProvider>
+                </ScrollToTop>
                 <ReactLenis
                     options={{
-                        duration: 2,
+                        duration: 3,
                     }}
                     root
-                >
-                    <CursorProvider>{children}</CursorProvider>
-                </ReactLenis>
+                />
                 {/* <Debug /> */}
                 <Footer zIndex={1} />
             </body>

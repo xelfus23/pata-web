@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import HeroSection from "./components/hero";
 import MyStory from "./components/myStory";
 // import EducationExperience from "./components/educationExperience";
@@ -8,6 +8,7 @@ import Head from "next/head";
 import Skills from "../../components/ui/skills";
 import GridBackground from "@/components/ui/gridBackground";
 // import Roadmap from "./components/roadmap";
+import { usePathname } from "next/navigation";
 
 const AboutPage = () => {
     const sections = [
@@ -28,6 +29,12 @@ const AboutPage = () => {
             component: <PersonalInterests />,
         },
     ];
+
+    const pathname = usePathname();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     return (
         <div className=" text-text pt-16 relative overflow-y-hidden">

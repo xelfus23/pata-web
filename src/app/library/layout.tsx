@@ -1,7 +1,7 @@
 // app/library/layout.tsx
 "use client";
 import { useWritingAnimation } from "@/hooks/useWritingAnimation";
-import { componentsData } from "@/lib/library_data";
+import { componentsData } from "@/lib/library-data";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { move } from "@/animations/animations";

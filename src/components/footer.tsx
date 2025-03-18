@@ -93,10 +93,11 @@ const Footer: React.FC<footerProps> = ({ zIndex }) => {
     ];
 
     const navLinks = [
-        { name: "Home", path: "#home" },
-        { name: "About", path: "#about" },
-        { name: "Projects", path: "#projects" },
-        { name: "Contact", path: "#contact" },
+        { name: "Home", path: "/" },
+        { name: "About", path: "/about" },
+        { name: "Projects", path: "/projects" },
+        { name: "Contact", path: "/contact" },
+        { name: "UI Kit", path: "/library" },
     ];
 
     return (

@@ -10,9 +10,11 @@ interface ProjectCardProps {
     githubUrl?: string;
     liveUrl?: string;
     index: number;
+    onTopOfPage?: boolean;
 }
 
 const ProjectCard = ({
+    onTopOfPage,
     title,
     description,
     technologies,
@@ -27,6 +29,7 @@ const ProjectCard = ({
         <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: onTopOfPage ? 1 : 0, y: onTopOfPage ? 0 : 50 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="group bg-background border border-secondary/20 rounded-xl overflow-hidden hover:border-primary/50 transition-colors hover:cursor-crosshair duration-300"

@@ -1,10 +1,73 @@
-const Projects: React.FC = () => {
+"use client";
+import React from "react";
+import Section from "@/components/ui/section";
+import ProjectCard from "@/components/ui/card";
+import { motion } from "framer-motion";
+
+const ProjectsPage = () => {
+    const projects = [
+        {
+            title: "Fitness App",
+            description:
+                "A fitness mobile application that leverages AI to generate exercise plans.",
+            technologies: ["React Native", "React"],
+            githubUrl: "#",
+            liveUrl: "#",
+        },
+        {
+            title: "Another Cool Project",
+            description: "A brief description of this other project.",
+            technologies: ["Next.js", "Tailwind CSS"],
+            githubUrl: "#",
+            liveUrl: "#",
+        },
+        // Add more projects here!
+    ];
+
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+            },
+        },
+    };
+
+    const item = {
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    };
+
     return (
-        <main>
-            <section className="h-screen w-screen flex items-center justify-center">
-                <h1>Still working on this page...</h1>
-            </section>
-        </main>
+        <Section
+            id="projects"
+            title="My Projects"
+            subtitle="A collection of projects I've worked on."
+        >
+            <motion.div
+                className="grid md:grid-cols-2 gap-6 lg:gap-8"
+                variants={container}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }} // Adjust amount as needed
+            >
+                {projects.map((project, index) => (
+                    <motion.div variants={item} key={index}>
+                        <ProjectCard
+                            title={project.title}
+                            description={project.description}
+                            technologies={project.technologies}
+                            githubUrl={project.githubUrl}
+                            liveUrl={project.liveUrl}
+                            index={index}
+                            onTopOfPage={true}
+                        />
+                    </motion.div>
+                ))}
+            </motion.div>
+        </Section>
     );
 };
-export default Projects;
+
+export default ProjectsPage;

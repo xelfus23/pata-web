@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { componentsData } from "@/lib/library_data";
+import { componentsData } from "@/lib/library-data";
 
 // Define proper types
 type ComponentItem = {

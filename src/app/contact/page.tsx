@@ -156,7 +156,7 @@ const Contact = () => {
                             custom={{ from: "right", delay: 0 }} // Pass the object
                             type="text"
                             id="name"
-                            className="mt-1 p-2 w-full rounded-md border border-gray-700 bg-background/50 text-text focus:ring-primary focus:border-primary"
+                            className="w-full p-3 bg-secondary/5 border border-secondary/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent text-text resize-none"
                             placeholder="Your Name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -177,7 +177,7 @@ const Contact = () => {
                             custom={{ from: "right", delay: 0.5 }} // Pass the object
                             type="email"
                             id="email"
-                            className="mt-1 p-2 w-full rounded-md border border-gray-700 bg-background/50 text-text focus:ring-primary focus:border-primary"
+                            className="w-full p-3 bg-secondary/5 border border-secondary/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent text-text resize-none"
                             placeholder="your.email@example.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -198,7 +198,7 @@ const Contact = () => {
                             custom={{ from: "right", delay: 1 }} // Pass the object
                             id="message"
                             rows={4}
-                            className="mt-1 p-2 w-full rounded-md border border-gray-700 bg-background/50 text-text focus:ring-primary focus:border-primary"
+                            className="w-full p-3 bg-secondary/5 border border-secondary/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent text-text resize-none"
                             placeholder="Tell me about your project or opportunity!"
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
