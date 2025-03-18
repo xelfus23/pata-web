@@ -6,6 +6,8 @@ import { CursorProvider } from "@/utils/cursorProvider";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navBar";
 import React from "react";
+import { Analytics } from "@vercel/analytics/react";
+
 // import Debug from "@/components/ui/debug";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,6 +25,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="scroll-smooth">
+            <Analytics />
             <body
                 className={`${inter.className} bg-background text-text scrollbar-hidden`}
             >
