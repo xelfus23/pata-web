@@ -43,7 +43,12 @@ const Hero: React.FC = () => {
                         >
                             <span className="text-text">Hi, I&apos;m </span>
                             <span className="text-primary">
-                                {useWritingAnimation("Patrick John", 2, 0.02)}
+                                {useWritingAnimation(
+                                    "Patrick John",
+                                    2,
+                                    0.02,
+                                    false
+                                )}
                             </span>
                         </motion.h1>
                     </motion.div>
@@ -68,7 +73,8 @@ const Hero: React.FC = () => {
                                 `I build modern web experiences with React, Next.js,
                             and more`,
                                 2,
-                                0.01
+                                0.01,
+                                false
                             )}
                         </motion.h2>
                     </motion.div>

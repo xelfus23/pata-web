@@ -17,7 +17,8 @@ const HeroSection = () => {
                     {useWritingAnimation(
                         "Driven by Code Fueled by Curiosity",
                         1,
-                        0.02
+                        0.02,
+                        false
                     )}
                 </h1>
                 <p className="text-lg md:text-xl font-mono text-text/80 leading-relaxed text-center">
@@ -25,7 +26,8 @@ const HeroSection = () => {
                         `A passionate student developer eager to learn and build
                     impactful solutions.`,
                         1,
-                        0.01
+                        0.01,
+                        false
                     )}
                 </p>
             </motion.div>

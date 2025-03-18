@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { componentsData } from "@/lib/library_data";
-import LibraryHomePage from "../page";
 
 // Define proper types
 type ComponentItem = {
@@ -64,12 +63,10 @@ export default function ComponentPage() {
     }
 
     return (
-        <LibraryHomePage>
-            <div className="border-l-1 rounded-md border-secondary/20 col-span-4 flex p-8 flex-col space-y-8">
-                {currentCategory.items.map((items) => (
-                    <div key={items.slug}>{items.code}</div>
-                ))}
-            </div>
-        </LibraryHomePage>
+        <div className="border-l-1 rounded-md border-secondary/20 col-span-4 flex p-8 flex-col space-y-8">
+            {currentCategory.items.map((items) => (
+                <div key={items.slug}>{items.code}</div>
+            ))}
+        </div>
     );
 }

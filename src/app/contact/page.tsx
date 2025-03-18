@@ -25,7 +25,7 @@ const Contact = () => {
         <div className="py-16 px-6 md:px-24 lg:px-32 grid lg:grid-cols-2 gap-20">
             <div className="flex justify-center flex-col mt-20">
                 <h1 className="text-4xl font-bold text-text mb-6">
-                    {useWritingAnimation("Let's Connect!", 1, 0.05)}
+                    {useWritingAnimation("Let's Connect!", 1, 0.05, false)}
                 </h1>
                 <p className="text-lg text-text/80 mb-8">
                     {useWritingAnimation(
@@ -34,7 +34,8 @@ const Contact = () => {
                     questions, projects you'd like to collaborate on, or
                     just want to connect!`,
                         1,
-                        0.01
+                        0.01,
+                        false
                     )}
                 </p>
 
@@ -43,7 +44,12 @@ const Contact = () => {
                 {/* Direct Contact Info */}
                 <div className="mt-12 border-t border-gray-700 pt-8">
                     <h2 className="text-2xl font-semibold text-text mb-4">
-                        {useWritingAnimation("Get in Touch Directly", 1, 0.05)}
+                        {useWritingAnimation(
+                            "Get in Touch Directly",
+                            1,
+                            0.05,
+                            false
+                        )}
                     </h2>
                     <ul>
                         <li className="text-text/80 mb-2 flex space-x-2 items-center">
@@ -118,7 +124,7 @@ const Contact = () => {
                 {/* Social Links */}
                 <div className="mt-8 border-t border-gray-700 pt-8">
                     <h2 className="text-2xl font-semibold text-text mb-4">
-                        {useWritingAnimation("Connect With Me", 1, 0.05)}
+                        {useWritingAnimation("Connect With Me", 1, 0.05, false)}
                     </h2>
                     <div className="flex space-x-4">
                         <a

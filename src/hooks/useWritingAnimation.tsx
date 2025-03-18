@@ -5,7 +5,8 @@ import { useState } from "react";
 export const useWritingAnimation = (
     text: string,
     duration: number,
-    delay: number
+    delay: number,
+    loop: boolean
 ) => {
     const spltText = text.split("");
     const [hoveredItem, setHoveredItem] = useState<number | null>(null);
@@ -23,6 +24,7 @@ export const useWritingAnimation = (
                     delay: index * delay,
                     ease: "easeInOut",
                     staggerChildren: 0.05,
+                    repeat: loop ? Infinity : 0,
                 }}
                 style={{
                     scale: hoveredItem === index ? 2 : 1,
