@@ -4,6 +4,7 @@ import { componentsData } from "@/lib/library_data";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { move } from "@/animations/animations";
+import React from "react";
 
 export default function LibraryPage({
     children,
