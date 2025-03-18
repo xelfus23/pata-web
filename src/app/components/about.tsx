@@ -35,7 +35,7 @@ const About = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6 }}
-                    onHoverStart={() => setCursorState({ scale: 4 })}
+                    onHoverStart={() => setCursorState({ scale: 2 })}
                     onHoverEnd={() => setCursorState({ scale: 0.5 })}
                     className="z-10"
                 >
@@ -130,7 +130,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="mt-3">
                         <Link
                             className="bg-primary text-background rounded-md px-6 py-3 hover:bg-primary/80 transition-colors"
                             href={"/about"}

@@ -197,7 +197,7 @@ const Contact = () => {
                             animate="animate"
                             custom={{ from: "right", delay: 1 }} // Pass the object
                             id="message"
-                            rows={4}
+                            rows={10}
                             className="w-full p-3 bg-secondary/5 border border-secondary/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent text-text resize-none"
                             placeholder="Tell me about your project or opportunity!"
                             value={message}
@@ -205,10 +205,10 @@ const Contact = () => {
                             required
                         ></motion.textarea>
                     </div>
-                    <div>
+                    <div className="flex">
                         <button
                             type="submit"
-                            className="w-full hover:cursor-pointer py-3 px-6 rounded-md bg-primary text-background font-semibold hover:bg-accent focus:outline-none focus:ring-2 focus:ring-primary/50"
+                            className=" hover:cursor-pointer py-3 px-6 rounded-md bg-primary text-background font-semibold hover:bg-accent focus:outline-none focus:ring-2 focus:ring-primary/50"
                         >
                             Send Message
                         </button>

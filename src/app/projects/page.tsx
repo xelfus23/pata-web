@@ -3,27 +3,9 @@ import React from "react";
 import Section from "@/components/ui/section";
 import ProjectCard from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { projectsData } from "@/lib/project/project-data";
 
 const ProjectsPage = () => {
-    const projects = [
-        {
-            title: "Fitness App",
-            description:
-                "A fitness mobile application that leverages AI to generate exercise plans.",
-            technologies: ["React Native", "React"],
-            githubUrl: "#",
-            liveUrl: "#",
-        },
-        {
-            title: "Another Cool Project",
-            description: "A brief description of this other project.",
-            technologies: ["Next.js", "Tailwind CSS"],
-            githubUrl: "#",
-            liveUrl: "#",
-        },
-        // Add more projects here!
-    ];
-
     const container = {
         hidden: { opacity: 0 },
         show: {
@@ -43,7 +25,7 @@ const ProjectsPage = () => {
         <Section
             id="projects"
             title="My Projects"
-            subtitle="A collection of projects I've worked on."
+            subtitle="A collection of projects I've worked on, but still unfinished."
         >
             <motion.div
                 className="grid md:grid-cols-2 gap-6 lg:gap-8"
@@ -52,7 +34,7 @@ const ProjectsPage = () => {
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }} // Adjust amount as needed
             >
-                {projects.map((project, index) => (
+                {projectsData.map((project, index) => (
                     <motion.div variants={item} key={index}>
                         <ProjectCard
                             title={project.title}
