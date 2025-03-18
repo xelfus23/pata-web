@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
                                 transition={{ duration: 0.5 }}
                                 className="text-xl font-bold text-primary"
                             >
-                                {useWritingAnimation("PATRICK", 1, 0.05)}
+                                {useWritingAnimation("PATRICK", 1, 0.05, false)}
                             </motion.span>
                         </Link>
                     </div>
