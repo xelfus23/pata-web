@@ -5,6 +5,7 @@ import ReactLenis from "lenis/react";
 import { CursorProvider } from "@/utils/cursorProvider";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navBar";
+import React from "react";
 // import Debug from "@/components/ui/debug";
 
 const inter = Inter({ subsets: ["latin"] });
