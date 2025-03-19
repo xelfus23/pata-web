@@ -1,5 +1,5 @@
-import Section from "../../components/ui/section";
-import ProjectCard from "../../components/ui/card";
+import Section from "../../ui/section";
+import ProjectCard from "../../ui/card";
 import { projectsData } from "@/lib/project/project-data";
 import { motion } from "framer-motion";
 import { useCursorState } from "@/utils/cursorProvider";

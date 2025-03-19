@@ -3,7 +3,7 @@ import { useWritingAnimation } from "@/hooks/useWritingAnimation";
 // import useScroll from "@/hooks/useScroll";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useCursorState } from "../../utils/cursorProvider";
+import { useCursorState } from "../../../utils/cursorProvider";
 
 const Hero: React.FC = () => {
     // const scroll = useScroll() * 0.4;

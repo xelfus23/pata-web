@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Section from "../../components/ui/section";
+import Section from "../../ui/section";
 import { useCursorState } from "@/utils/cursorProvider";
 
 const Contact = () => {

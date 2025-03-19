@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import Section from "../../components/ui/section";
+import Section from "../../ui/section";
 import Image from "next/image";
 import useScroll from "@/hooks/useScroll";
-import { useCursorState } from "../../utils/cursorProvider";
+import { useCursorState } from "../../../utils/cursorProvider";
 import Link from "next/link";
 
 const About = () => {
@@ -122,7 +122,7 @@ const About = () => {
                                     onHoverEnd={() =>
                                         setCursorState({ scale: 0.5 })
                                     }
-                                    className="px-3 py-1  bg-secondary/10 text-text rounded-md border border-secondary/20"
+                                    className="px-3 py-1 font-mono  bg-secondary/10 text-text rounded-md border border-secondary/20"
                                 >
                                     {skill}
                                 </motion.span>

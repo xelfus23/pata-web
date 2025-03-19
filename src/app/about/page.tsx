@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect } from "react";
-import HeroSection from "./components/hero";
-import MyStory from "./components/myStory";
+import HeroSection from "../../components/sections/aboutpage/hero";
+import MyStory from "../../components/sections/aboutpage/myStory";
 // import EducationExperience from "./components/educationExperience";
-import PersonalInterests from "./components/personalInterest";
+import PersonalInterests from "../../components/sections/aboutpage/personalInterest";
 import Head from "next/head";
 import Skills from "../../components/ui/skills";
 import GridBackground from "@/components/ui/gridBackground";

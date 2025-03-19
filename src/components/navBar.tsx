@@ -82,7 +82,22 @@ const Navbar: React.FC = () => {
                                 custom={{ from: "left", delay: 0 }}
                                 className="relative h-8 w-8"
                             >
-                                <Image src={"/icons/icon.png"} fill alt="" />
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{
+                                        duration: 30,
+                                        ease: "linear",
+                                        repeat: Infinity,
+                                        delay: 0,
+                                    }}
+                                    className="w-full h-full"
+                                >
+                                    <Image
+                                        src={"/icons/icon.png"}
+                                        fill
+                                        alt=""
+                                    />
+                                </motion.div>
                             </motion.div>
                             <motion.span
                                 initial={{ opacity: 0, x: -20 }}

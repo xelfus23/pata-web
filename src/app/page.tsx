@@ -1,8 +1,8 @@
 "use client";
-import About from "@/app/components/about";
-import Contact from "@/app/components/contact";
-import Hero from "@/app/components/hero";
-import Projects from "@/app/components/projects";
+import About from "@/components/sections/homepage/about";
+import Contact from "@/components/sections/homepage/contact";
+import Hero from "@/components/sections/homepage/hero";
+import Projects from "@/components/sections/homepage/projects";
 import CursorFollower from "@/components/ui/cursor";
 import GridBackground from "@/components/ui/gridBackground";
 
