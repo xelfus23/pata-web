@@ -6,8 +6,8 @@ export const projectsData: Project[] = [
         description:
             "A React Native mobile app that uses a simple questionnaire and AI algorithms to generate customized daily exercise plans.  The app considers fitness level, available equipment, and goals (weight loss, muscle gain, general wellness).",
         technologies: ["React Native", "React", "Gemini API", "TailwindCSS"],
-        githubUrl: "github.com/yourusername/fitness-app",
-        liveUrl: "https://expo.dev/@yourusername/fitness-app",
+        githubUrl: "#",
+        liveUrl: "#",
         imageUrl: "#", // Add path to a screenshot or mockup
         highlights: [
             "Implemented a user-friendly questionnaire flow using React Hooks.",
@@ -20,8 +20,8 @@ export const projectsData: Project[] = [
         description:
             "A React Native mobile app that uses a simple questionnaire and AI algorithms to generate customized daily exercise plans.  The app considers fitness level, available equipment, and goals (weight loss, muscle gain, general wellness).",
         technologies: ["React Native", "React", "Gemini API", "TailwindCSS"],
-        githubUrl: "github.com/yourusername/fitness-app",
-        liveUrl: "https://expo.dev/@yourusername/fitness-app",
+        githubUrl: "#",
+        liveUrl: "#",
         imageUrl: "#", // Add path to a screenshot or mockup
         highlights: [
             "Implemented a user-friendly questionnaire flow using React Hooks.",
