@@ -1,11 +1,11 @@
 import Section from "../../ui/section";
 import ProjectCard from "../../ui/card";
 import { projectsData } from "@/lib/project/project-data";
-import { motion } from "framer-motion";
-import { useCursorState } from "@/utils/cursorProvider";
+import PrimaryButton from "@/components/ui/button/primaryButton";
+import { useRouter } from "next/navigation";
 
 const Projects = () => {
-    const { setCursorState } = useCursorState();
+    const router = useRouter();
 
     return (
         <Section
@@ -28,14 +28,11 @@ const Projects = () => {
                 ))}
             </div>
             <div className="flex items-center justify-center mt-20">
-                <motion.a
-                    href="/projects"
-                    onHoverStart={() => setCursorState({ scale: 1 })}
-                    onHoverEnd={() => setCursorState({ scale: 0.5 })}
-                    className="bg-primary hover:bg-primary/80 px-6 py-3 rounded-md text-background hover:cursor-pointer"
-                >
-                    View more
-                </motion.a>
+                <PrimaryButton
+                    label="View more"
+                    type="button"
+                    onClick={() => router.push("/projects")}
+                />
             </div>
         </Section>
     );

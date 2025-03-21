@@ -1,18 +1,20 @@
-"use client";
 import { useWritingAnimation } from "@/hooks/useWritingAnimation";
-// import useScroll from "@/hooks/useScroll";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { useCursorState } from "../../../utils/cursorProvider";
+import PrimaryButton from "@/components/ui/button/primaryButton";
+import SecondaryButton from "@/components/ui/button/secondaryButton";
+import { move } from "@/animations/animations";
+import { useRouter } from "next/navigation";
 
 const Hero: React.FC = () => {
     // const scroll = useScroll() * 0.4;
     const { setCursorState } = useCursorState();
+    const router = useRouter();
 
     return (
         <section
-            id="#home"
-            className="relative flex flex-col items-center justify-center min-h-screen py-16 mt-16"
+            id="hero"
+            className="relative flex flex-col items-center justify-center min-h-screen py-16 mt-16 overflow-hidden"
         >
             <div className="container mx-auto px-4 z-10 justify-center flex items-center">
                 <motion.div
@@ -31,15 +33,15 @@ const Hero: React.FC = () => {
                             y: 0,
                         }}
                         transition={{ duration: 0.5 }}
-                        onHoverStart={() => setCursorState({ scale: 3 })}
-                        onHoverEnd={() => setCursorState({ scale: 0.5 })}
+                        onMouseOver={() => setCursorState({ scale: 2 })}
+                        onMouseLeave={() => setCursorState({ scale: 0.5 })}
                     >
                         <motion.h1
                             // animate={{ y: scroll }}
                             transition={{
                                 duration: 0.3,
                             }}
-                            className="text-4xl md:text-6xl font-bold mb-6"
+                            className="text-4xl md:text-6xl font-bold mb-6 pointer-events-none"
                         >
                             <span className="text-text">Hi, I&apos;m </span>
                             <span className="text-primary">
@@ -67,10 +69,10 @@ const Hero: React.FC = () => {
                             transition={{
                                 duration: 0.3,
                             }}
-                            className="text-xl md:text-1xl font-medium mb-8 text-text/80 font-mono"
+                            className="text-xl md:text-1xl font-medium mb-8 text-text/80 font-mono pointer-events-none"
                         >
                             {useWritingAnimation(
-                                `I build modern web experiences with React, Next.js,
+                                `I build modern website with React, Next.js, TailwindCSS
                             and more`,
                                 2,
                                 0.01,
@@ -80,35 +82,44 @@ const Hero: React.FC = () => {
                     </motion.div>
 
                     <motion.div
-                        // animate={{ y: scroll }}
                         transition={{
-                            duration: 0.2,
+                            duration: 1,
                         }}
+                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center"
                     >
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.8 }}
-                            className="px-6 py-3 cursor-pointer bg-primary text-background font-medium rounded-md hover:bg-primary/90 transition-colors duration-300"
-                            onHoverStart={() => setCursorState({ scale: 2 })}
-                            onHoverEnd={() => setCursorState({ scale: 0.5 })}
+                            variants={move}
+                            animate={"animate"}
+                            initial={"initial"}
+                            custom={{ from: "bottom", delay: 1 }}
+                            transition={{
+                                duration: 1,
+                            }}
                         >
-                            <Link className="" href="#projects">
-                                View My Work
-                            </Link>
+                            <PrimaryButton
+                                onClick={() => router.push("/projects")}
+                                label="View my work"
+                                disabled={false}
+                                type="button"
+                            />
                         </motion.div>
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 1 }}
-                            className="px-6 py-3 cursor-pointer border border-primary text-primary font-medium rounded-md hover:bg-primary/10 transition-colors duration-300"
-                            onHoverStart={() => setCursorState({ scale: 2 })}
-                            onHoverEnd={() => setCursorState({ scale: 0.5 })}
+                            variants={move}
+                            animate={"animate"}
+                            initial={"initial"}
+                            custom={{ from: "bottom", delay: 1.2 }}
+                            transition={{
+                                duration: 1,
+                            }}
                         >
-                            <Link className="" href="#contact">
-                                Contact Me
-                            </Link>
+                            <SecondaryButton
+                                onClick={() => router.push("/contact")}
+                                label="Contact Me"
+                                disabled={false}
+                                type="button"
+                            />
                         </motion.div>
                     </motion.div>
                 </motion.div>
@@ -144,7 +155,85 @@ const Hero: React.FC = () => {
                 </svg>
             </motion.div>
 
-            {/* <div className="container h-screen"></div> */}
+            <motion.div className="w-screen h-screen left-1/3 top-30 absolute">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{
+                        y: [0, 10, 0], // Move up and down
+                        x: [0, 5, 0], // Move left and right (optional)
+                        opacity: [0.3, 0.8, 0.3], // Fade in and out
+                    }}
+                    transition={{
+                        duration: 5, // Adjust for desired speed
+                        repeat: Infinity,
+                        repeatType: "loop", // or "yoyo" for a back-and-forth motion
+                        ease: "easeInOut", // or "easeOut", "linear", etc.
+                        delay: 0.2,
+                    }}
+                    className="bg-secondary/20 w-20 aspect-square rotate-45 absolute top-55 left-80 -translate-x-1/2 -translate-y-1/2" // Center it and use translate
+                />
+                <motion.div
+                    animate={{
+                        y: [0, 10, 0], // Move up and down
+                        x: [0, 5, 0], // Move left and right (optional)
+                        opacity: [0.3, 0.8, 0.3], // Fade in and out
+                    }}
+                    transition={{
+                        duration: 5, // Adjust for desired speed
+                        repeat: Infinity,
+                        repeatType: "loop", // or "yoyo" for a back-and-forth motion
+                        ease: "easeInOut", // or "easeOut", "linear", etc.
+                        delay: 0.4,
+                    }}
+                    className="bg-primary/20 w-[10%] aspect-square rotate-45 absolute top-70 left-80"
+                />
+                <motion.div
+                    animate={{
+                        y: [0, 10, 0], // Move up and down
+                        x: [0, 5, 0], // Move left and right (optional)
+                        opacity: [0.3, 0.8, 0.3], // Fade in and out
+                    }}
+                    transition={{
+                        duration: 5, // Adjust for desired speed
+                        repeat: Infinity,
+                        repeatType: "loop", // or "yoyo" for a back-and-forth motion
+                        ease: "easeInOut", // or "easeOut", "linear", etc.
+                        delay: 0.6,
+                    }}
+                    className="bg-secondary/20 w-[5%] aspect-square rotate-45 absolute top-60 left-40"
+                />
+                <motion.div
+                    animate={{
+                        y: [0, 10, 0], // Move up and down
+                        x: [0, 5, 0], // Move left and right (optional)
+                        opacity: [0.3, 0.8, 0.3], // Fade in and out
+                    }}
+                    transition={{
+                        duration: 5, // Adjust for desired speed
+                        repeat: Infinity,
+                        repeatType: "loop", // or "yoyo" for a back-and-forth motion
+                        ease: "easeInOut", // or "easeOut", "linear", etc.
+                        delay: 0.8,
+                    }}
+                    className="bg-accent/20 w-[4%] aspect-square rotate-45 absolute top-100 left-1/9"
+                />
+
+                <motion.div
+                    animate={{
+                        y: [0, 10, 0], // Move up and down
+                        x: [0, 5, 0], // Move left and right (optional)
+                        opacity: [0.3, 0.8, 0.3], // Fade in and out
+                    }}
+                    transition={{
+                        duration: 5, // Adjust for desired speed
+                        repeat: Infinity,
+                        repeatType: "loop", // or "yoyo" for a back-and-forth motion
+                        ease: "easeInOut", // or "easeOut", "linear", etc.
+                        delay: 1,
+                    }}
+                    className="bg-accent/20 w-[2%] aspect-square rotate-45 absolute top-118 left-1/6"
+                />
+            </motion.div>
         </section>
     );
 };

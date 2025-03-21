@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useCursorState } from "../../utils/cursorProvider";

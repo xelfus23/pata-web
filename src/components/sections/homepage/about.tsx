@@ -1,25 +1,15 @@
-"use client";
 import { motion } from "framer-motion";
 import Section from "../../ui/section";
 import Image from "next/image";
 import useScroll from "@/hooks/useScroll";
 import { useCursorState } from "../../../utils/cursorProvider";
-import Link from "next/link";
+import PrimaryButton from "@/components/ui/button/primaryButton";
+import { useRouter } from "next/navigation";
+import { skills } from "@/lib/skills";
 
-const About = () => {
-    const skills = [
-        "React.js",
-        "Next.js",
-        "TypeScript",
-        "JavaScript",
-        "TailwindCSS",
-        "Framer Motion",
-        "React Native",
-        "HTML5",
-        "CSS3",
-    ];
-
+const About: React.FC = () => {
     const { setCursorState } = useCursorState();
+    const router = useRouter();
 
     const offset = useScroll();
 
@@ -27,7 +17,7 @@ const About = () => {
         <Section
             id="about"
             title="About Me"
-            subtitle="Learn more about my skills and experience"
+            subtitle="Learn about my skills and experience"
         >
             <div className="grid md:grid-cols-2 gap-12 items-center min-h-screen">
                 <motion.div
@@ -64,11 +54,12 @@ const About = () => {
                             transition={{
                                 duration: 1,
                             }}
-                            className="absolute inset-0 flex items-center justify-center text-primary"
+                            className="absolute h-full w-full inset-0 flex items-center justify-center text-primary"
                         >
                             <Image
                                 src={"/images/front.png"}
                                 fill
+                                sizes="auto"
                                 alt="profile"
                             />
                         </motion.div>
@@ -130,13 +121,13 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className="mt-3">
-                        <Link
-                            className="bg-primary text-background rounded-md px-6 py-3 hover:bg-primary/80 transition-colors"
-                            href={"/about"}
-                        >
-                            Learn more
-                        </Link>
+                    <div className="mt-3 flex">
+                        <PrimaryButton
+                            label="Learn more"
+                            onClick={() => router.push("/about")}
+                            type="button"
+                            
+                        />
                     </div>
                 </motion.div>
             </div>

@@ -7,7 +7,7 @@ interface footerProps {
     zIndex: number;
 }
 
-const Footer: React.FC<footerProps> = ({ zIndex }) => {
+const Footer: React.FC<footerProps> = () => {
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
@@ -101,12 +101,7 @@ const Footer: React.FC<footerProps> = ({ zIndex }) => {
     ];
 
     return (
-        <footer
-            className="bg-background border-t border-secondary/20 pt-12 pb-6"
-            style={{
-                zIndex: zIndex,
-            }}
-        >
+        <footer className="bg-background border-t border-secondary/20 pt-12 pb-6">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-3 gap-8 mb-8">
                     <div>
@@ -114,12 +109,14 @@ const Footer: React.FC<footerProps> = ({ zIndex }) => {
                             href="/"
                             className="text-2xl font-bold text-primary mb-4 flex space-x-2"
                         >
-                            <Image
-                                src={"/icons/icon.png"}
-                                width={30}
-                                height={30}
-                                alt=""
-                            />
+                            <div className="relative w-8 h-8 aspect-square">
+                                <Image
+                                    src={"/icons/icon.png"}
+                                    alt="icon"
+                                    sizes="auto"
+                                    fill
+                                />
+                            </div>
                             <p>Patrick</p>
                         </Link>
                         <p className="text-text/80 mb-4">

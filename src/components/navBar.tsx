@@ -3,9 +3,10 @@ import Link from "next/link";
 import { useState, useRef, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
+// import Image from "next/image";
 import { useWritingAnimation } from "@/hooks/useWritingAnimation";
-import { move } from "@/animations/animations";
+import useScroll from "@/hooks/useScroll";
+// import { move } from "@/animations/animations";
 
 interface NavItem {
     name: string;
@@ -27,13 +28,15 @@ const Navbar: React.FC = () => {
     const navItems = useMemo<NavItem[]>(
         () => [
             { name: "Home", path: "/" },
-            { name: "About", path: "/about" },
+            { name: "About Me", path: "/about" },
             { name: "Projects", path: "/projects" },
             { name: "Contact", path: "/contact" },
-            { name: "Docs", path: "/library" },
+            // { name: "Docs", path: "/library" },
         ],
         []
     );
+
+    const scroll = useScroll();
 
     // Update underline position when pathname changes
     useEffect(() => {
@@ -67,7 +70,12 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-secondary/20">
+        <nav
+            style={{
+                transform: `-translateY(${scroll * 0.5}px)`,
+            }}
+            className="w-full z-40 absolute"
+        >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                     <div className="flex items-center">
@@ -75,30 +83,20 @@ const Navbar: React.FC = () => {
                             href="/"
                             className="flex-shrink-0 flex items-center space-x-2"
                         >
-                            <motion.div
+                            {/* <motion.div
                                 variants={move}
                                 initial="initial"
                                 animate="animate"
                                 custom={{ from: "left", delay: 0 }}
                                 className="relative h-8 w-8"
                             >
-                                <motion.div
-                                    animate={{ rotate: 360 }}
-                                    transition={{
-                                        duration: 30,
-                                        ease: "linear",
-                                        repeat: Infinity,
-                                        delay: 0,
-                                    }}
-                                    className="w-full h-full"
-                                >
-                                    <Image
-                                        src={"/icons/icon.png"}
-                                        fill
-                                        alt=""
-                                    />
-                                </motion.div>
-                            </motion.div>
+                                <Image
+                                    src={"/icons/icon.png"}
+                                    fill
+                                    alt="icon"
+                                    sizes="auto"
+                                />
+                            </motion.div> */}
                             <motion.span
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -146,7 +144,7 @@ const Navbar: React.FC = () => {
                                         pathname === item.path
                                             ? "text-primary"
                                             : "text-text"
-                                    } hover:text-primary transition-colors duration-300`}
+                                    } hover:text-primary transition-colors duration-300 text-sm`}
                                     ref={setNavItemRef(item.name)}
                                 >
                                     {item.name}

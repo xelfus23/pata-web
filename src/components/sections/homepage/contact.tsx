@@ -1,31 +1,11 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "../../ui/section";
-import { useCursorState } from "@/utils/cursorProvider";
+import PrimaryButton from "@/components/ui/button/primaryButton";
+import React from "react";
+import { useRouter } from "next/navigation";
 
-const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: "",
-    });
-
-    const { setCursorState } = useCursorState();
-
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Here you would typically send the form data to your backend
-        console.log("Form submitted:", formData);
-        alert("Thanks for your message! I'll get back to you soon.");
-        setFormData({ name: "", email: "", message: "" });
-    };
+const Contact: React.FC = () => {
+    const router = useRouter();
 
     return (
         <Section
@@ -39,11 +19,12 @@ const Contact = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6 }}
+                    className="space-y-6"
                 >
-                    <h3 className="text-2xl font-semibold mb-4 text-primary">
+                    <h3 className="text-2xl font-semibold text-primary">
                         Let&apos;s Talk
                     </h3>
-                    <p className="mb-6 text-text/90">
+                    <p className=" text-text/90">
                         I&apos;m interested in freelance opportunities,
                         especially ambitious or large projects. However, if you
                         have other requests or questions, don&apos;t hesitate to
@@ -137,81 +118,12 @@ const Contact = () => {
                             </div>
                         </div>
                     </div>
-                </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <div>
-                            <label
-                                htmlFor="name"
-                                className="block text-text mb-2"
-                            >
-                                Name
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                required
-                                className="w-full p-3 bg-secondary/5 border border-secondary/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent text-text"
-                                placeholder="Your Name"
-                            />
-                        </div>
-
-                        <div>
-                            <label
-                                htmlFor="email"
-                                className="block text-text mb-2"
-                            >
-                                Email
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                                className="w-full p-3 bg-secondary/5 border border-secondary/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent text-text"
-                                placeholder="your.email@example.com"
-                            />
-                        </div>
-
-                        <div>
-                            <label
-                                htmlFor="message"
-                                className="block text-text mb-2"
-                            >
-                                Message
-                            </label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                required
-                                rows={6}
-                                className="w-full p-3 bg-secondary/5 border border-secondary/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent text-text resize-none"
-                                placeholder="How can I help you?"
-                            ></textarea>
-                        </div>
-
-                        <motion.button
-                            type="submit"
-                            className="px-6 py-3 bg-primary text-background font-medium rounded-md hover:bg-primary/90 transition-colors duration-300 w-full md:w-auto hover:cursor-pointer"
-                            onHoverStart={() => setCursorState({ scale: 2 })}
-                            onHoverEnd={() => setCursorState({ scale: 0.5 })}
-                        >
-                            Send Message
-                        </motion.button>
-                    </form>
+                    <PrimaryButton
+                        label="Contact me"
+                        type="button"
+                        onClick={() => router.push("/contact")}
+                    />
                 </motion.div>
             </div>
         </Section>

@@ -1,7 +1,6 @@
 import SimpleNav from "@/components/ui/navigation/simpleNav";
-import PrimaryBttn from "@/components/ui/buttons/primary-button";
-import SecondaryButton from "@/components/ui/buttons/secondary-button";
-
+// import SecondaryButton from "@/components/ui/button/secondary-button";
+// import PrimaryButton from "@/components/ui/button/primary-button";
 // src/lib/library_data.ts
 export const componentsData = [
     {
@@ -11,12 +10,12 @@ export const componentsData = [
             {
                 label: "Primary Button",
                 slug: "primary",
-                code: <PrimaryBttn />,
+                code: <div></div>,
             },
             {
                 label: "Secondary Button",
                 slug: "secondary",
-                code: <SecondaryButton />,
+                code: <div></div>,
             },
         ],
     },

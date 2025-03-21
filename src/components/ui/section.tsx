@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { useWritingAnimation } from "@/hooks/useWritingAnimation";
 
 interface SectionProps {
     id?: string;
@@ -13,7 +14,7 @@ interface SectionProps {
 const Section = ({
     id,
     title,
-    subtitle,
+    subtitle = "",
     children,
     className = "",
 }: SectionProps) => {
@@ -30,17 +31,23 @@ const Section = ({
                     transition={{ duration: 0.6 }}
                     className="mb-12 text-center"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 inline-block">
-                        <span className="text-text">{title}</span>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 inline-block ">
+                        <span className="text-text pointer-events-none">
+                            {title}
+                        </span>
                         <div className="h-1 w-full bg-primary mt-1 transform transition-all duration-300"></div>
                     </h2>
-                    {subtitle && (
-                        <p className="text-lg text-text/70 max-w-2xl mx-auto font-mono">
-                            {subtitle}
-                        </p>
-                    )}
+                    <motion.p
+                        whileInView={{ opacity: 1 }}
+                        initial={{ opacity: 0 }}
+                        viewport={{
+                            once: true,
+                        }}
+                        className="text-lg text-text/70 max-w-2xl mx-auto pointer-events-none font-mono"
+                    >
+                        {useWritingAnimation(subtitle, 1, 0.02, false)}
+                    </motion.p>
                 </motion.div>
-
                 <div>{children}</div>
             </div>
         </section>

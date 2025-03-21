@@ -12,7 +12,6 @@ function ScrollToTop({ children }: ScrollToTopProps) {
     const pathname = usePathname();
 
     useEffect(() => {
-        console.log("Pathname changed:", pathname); // Add this line
         window.scrollTo(0, 0);
     }, [pathname]);
 

@@ -11,7 +11,7 @@ const GridBackground = () => {
     const svgVariants = {
         initial: { opacity: 0 },
         animate: {
-            opacity: 1,
+            opacity: 0.8,
             y: scroll * 0.3,
             transition: {
                 duration: 0, // Fade-in duration
