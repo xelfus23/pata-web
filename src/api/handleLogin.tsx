@@ -1,13 +1,18 @@
 import axios from "axios";
 
+type userType = {
+    username: string;
+    password: string;
+};
+
 export const HandleLogin = async (username: string, password: string) => {
     try {
         const data = {
-            username,
-            password,
-        };
+            username: username,
+            password: password,
+        } as userType;
         axios
-            .get("http://localhost:5454/user", data)
+            .get<userType>("http://localhost:5454/user", { params: data })
             .then((res) => {
                 console.log(res);
             })
